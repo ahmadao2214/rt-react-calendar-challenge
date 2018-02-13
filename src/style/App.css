@@ -1,0 +1,37 @@
+.rbc-calendar {
+  min-height: 600px;
+}
+
+.print-div{
+  text-align: center;
+  margin: 0 auto;
+  border: 1px solid black;
+  background-color: #ccc;
+  display: flex;
+  margin: auto;
+}
+.print-div-1
+{
+  width: 600px;
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.print-div-2
+{
+  height: 75%;
+  width: 75%;
+  flex-direction: column;
+  background-color: orange;
+}
+
+.print-div-3
+{
+  height: 50%;
+  width: 50%;
+  background-color: orange;
+  align-items: center;
+  justify-content: center;
+}
