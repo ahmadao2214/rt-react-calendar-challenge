@@ -1,4 +1,6 @@
 import update from 'immutability-helper';
+import { UPDATE_EVENTS, DELETE_EVENT } from '../actions'
+
 
 const initialState = [
   {
@@ -29,7 +31,7 @@ export default function(state = initialState, action) {
   const current = new Date();
 
   switch(action.type) {
-    case 'UPDATE_EVENTS':
+    case UPDATE_EVENTS:
       dateString = action.payload.date.split('/');
       newDate = new Date(2018, dateString[0] - 1, dateString[1]);
       newEvent = {
@@ -58,12 +60,13 @@ export default function(state = initialState, action) {
      }
      return state;
 
-    case 'DELETE_EVENT':
+    case DELETE_EVENT:
       dateString = action.payload.date.split('/');
       newDate = new Date(2018, dateString[0] - 1, dateString[1]);
       findEvent = state.find( (findEvent) => {
           return (
             newDate.getMonth() == findEvent.start.getMonth() &&
+            newDate.getDate() == findEvent.start.getDate() &&
             action.payload.title == findEvent.title
           );
       });
