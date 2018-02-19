@@ -9,19 +9,19 @@ const initialState = [
     end: new Date(2018, 1, 28)
   },
   {
-    title: 'Meeting',
-    start: new Date(2018, 1, 12),
-    end: new Date(2018, 1, 12)
+    title: 'Interview',
+    start: new Date(2018, 1, 19),
+    end: new Date(2018, 1, 19)
   },
   {
     title: 'Birthday Party',
-    start: new Date(2018, 1, 13),
-    end: new Date(2018, 1, 13)
+    start: new Date(2018, 1, 22),
+    end: new Date(2018, 1, 22)
   },
   {
     title: 'Late Night Event',
-    start: new Date(2018, 1, 17),
-    end: new Date(2018, 1, 18)
+    start: new Date(2018, 1, 24),
+    end: new Date(2018, 1, 24)
   },
 ]
 
@@ -40,8 +40,9 @@ export default function(state = initialState, action) {
         end: newDate
       };
       const sameDay = (newEvent.start.getMonth() == current.getMonth()) && (newEvent.start.getDate() == current.getDate());
+      const futureDate = (newEvent.start.getTime() >= current.getTime());
 
-      if (newEvent.start.getTime() >= current.getTime() || sameDay){
+      if (futureDate || sameDay){
         findEvent = state.find( (findEvent) => {
           return (
             newEvent.start.getMonth() == findEvent.start.getMonth() &&
