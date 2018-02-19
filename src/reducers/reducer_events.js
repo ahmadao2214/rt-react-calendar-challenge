@@ -25,10 +25,7 @@ const initialState = [
 
 export default function(state = initialState, action) {
   let newArray = state.slice();
-  let dateString;
-  let newDate;
-  let newEvent;
-  let findEvent;
+  let dateString, newDate, newEvent, findEvent;
   const current = new Date();
 
   switch(action.type) {
@@ -40,24 +37,24 @@ export default function(state = initialState, action) {
         start: newDate,
         end: newDate
       };
+      const sameDay = (newEvent.start.getMonth() == current.getMonth()) && (newEvent.start.getDate() == current.getDate());
 
-     if (newEvent.start.getMonth() >= current.getMonth() &&
-        newEvent.start.getDate() >= current.getDate()){
-          findEvent = state.find( (findEvent) => {
-            return (
-              newEvent.start.getMonth() == findEvent.start.getMonth() &&
-              newEvent.start.getDate() == findEvent.start.getDate()
-            );
-          });
-       if(findEvent) {
-         const idx = state.indexOf(findEvent);
-         newArray = update(state, {[idx]:{$set: newEvent}});
-         return newArray;
-       }
-       else {
-         newArray.splice(0, 0, newEvent);
-         return newArray;
-       }
+      if (newEvent.start.getTime() >= current.getTime() || sameDay){
+        findEvent = state.find( (findEvent) => {
+          return (
+            newEvent.start.getMonth() == findEvent.start.getMonth() &&
+            newEvent.start.getDate() == findEvent.start.getDate()
+          );
+        });
+        if(findEvent) {
+           const idx = state.indexOf(findEvent);
+           newArray = update(state, {[idx]:{$set: newEvent}});
+           return newArray;
+         }
+        else {
+           newArray.splice(0, 0, newEvent);
+           return newArray;
+        }
      }
      return state;
 
