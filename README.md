@@ -37,4 +37,4 @@ Make a calendar app using React. The calendar should display all the dates for t
 * Integrate [Google Calendar API](https://developers.google.com/google-apps/calendar/) and prepopulate events from my own Google Calendar
 * Past event warning "Cannot update events on past dates"
 
-![Alt Text](https://github.com/ahmadao2214/rt-react-calendar-challenge/public/githubdemo.gif)
+![Alt Text](http://gph.is/2EFvLvi)
